@@ -3,9 +3,8 @@ class Solution:
         lookup = {}
         
         for i , n in enumerate(nums):
-            diff = target - n
-            if diff in lookup:
-                  return lookup[diff] , i
+            if target - n in lookup:
+                  return lookup[target - n] , i
             lookup[n] = i
             
                           

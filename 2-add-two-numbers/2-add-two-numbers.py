@@ -11,29 +11,16 @@ class Solution:
         x = newNode
         l1 = l1.next
         l2 = l2.next
-        while l1 != None and l2 != None:
+        while l1 or l2 or carry :
             newNode.next = ListNode()
             newNode =  newNode.next
-            newNode.val = (carry + l1.val + l2.val) % 10
-            carry = (carry + l1.val + l2.val)//10
-            l1 = l1.next
-            l2 = l2.next
+            value1 = l1.val if l1 else 0
+            value2 = l2.val if l2 else 0
+            s = carry + value1 + value2
+            newNode.val = s % 10
+            carry = s//10
             
-        while(l2 != None):
-            newNode.next = ListNode()
-            newNode =  newNode.next
-            newNode.val = (carry + l2.val) % 10
-            carry = (carry +  l2.val)//10
-            l2 = l2.next
-        while(l1 != None):
-            newNode.next = ListNode()
-            newNode =  newNode.next
-            newNode.val = (carry + l1.val) % 10
-            carry = (carry + l1.val )//10
-            l1 = l1.next
-        if carry:
-            newNode.next = ListNode()
-            newNode =  newNode.next
-            newNode.val = 1
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
         return x
             

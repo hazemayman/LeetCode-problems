@@ -27,5 +27,6 @@ class Solution:
                     maxArrayScore = nums[i] + maxArrayScore 
                     maxArrayScoreIndex = i
 
-        print(lookup)
-        return lookup[-1]
+        for i in range(len(lookup) - 1 , -1, -1):
+            if(lookup[i]!= None):
+                return lookup[i]

@@ -23,6 +23,7 @@ class Solution:
         return Node
                
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        self.lookup = {inorder[i] : i for i in range(len(inorder))}
         a = self.rec(preorder, inorder)
         return a
             

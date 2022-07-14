@@ -9,10 +9,10 @@ class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         if (not inorder):
             return None
-        
-        Node = TreeNode(preorder[0])
-        index = inorder.index(preorder[0])
-        Node.left = self.buildTree(preorder[1:index+1],inorder[:index])
-        Node.right = self.buildTree(preorder[index+1: ],inorder[index+1:]) 
+        value = preorder.pop(0)
+        Node = TreeNode(value)
+        index = inorder.index(value)
+        Node.left = self.buildTree(preorder,inorder[:index])
+        Node.right = self.buildTree(preorder,inorder[index+1:]) 
 
         return Node

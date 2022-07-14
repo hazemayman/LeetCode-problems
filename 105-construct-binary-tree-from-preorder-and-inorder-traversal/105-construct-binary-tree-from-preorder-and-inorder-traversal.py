@@ -5,7 +5,6 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    lookup = None
     def rec(self, preorder: List[int], inorder: List[int]):
         # rootIndex = self.lookup[preorder[0]]
         rootIndex = inorder.index(preorder[0])
@@ -23,7 +22,6 @@ class Solution:
         return Node
                
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        self.lookup = {inorder[i] : i for i in range(len(inorder))}
         a = self.rec(preorder, inorder)
         return a
             

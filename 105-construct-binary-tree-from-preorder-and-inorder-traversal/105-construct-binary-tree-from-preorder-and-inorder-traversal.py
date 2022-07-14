@@ -14,10 +14,10 @@ class Solution:
         leftSubTreepreOrder  = preorder[1:rootIndex+1]
         rightSubTreepreOrder = preorder[rootIndex+1:]
         Node = TreeNode(preorder[0])
-        if(leftSubTreeInorder):
+        if(len(leftSubTreeInorder)>0):
             left = self.rec(leftSubTreepreOrder,leftSubTreeInorder)
             Node.left = left
-        if(rightSubTreeInorder):
+        if(len(rightSubTreeInorder)>0):
             right = self.rec(rightSubTreepreOrder,rightSubTreeInorder) 
             Node.right = right
         return Node

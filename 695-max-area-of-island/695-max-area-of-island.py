@@ -1,32 +1,13 @@
 class Solution:
+    def returnMax(self,grid , i , j):
+        if(i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]) or grid[i][j]==0):
+            return 0
+        grid[i][j] = 0
+        return 1 + self.returnMax(grid , i-1 , j) + self.returnMax(grid , i+1 , j) + self.returnMax(grid , i , j-1) + self.returnMax(grid , i , j+1)
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        exploreList = []
-        explored = set()
         answer = 0
-        counter = 0
-        numberOfNodes  = len(grid[0])
         for i in range(len(grid)):
-            for j in range(numberOfNodes):
-                if i*numberOfNodes + j in explored:
-                    continue
-                if grid[i][j] == 1:
-                    exploreList.append([i,j])
-                    counter = 0
-            
-                while(exploreList):
-                    Node = exploreList.pop(0)
-                    if(Node[0] * numberOfNodes + Node[1] in explored or grid[Node[0]][Node[1]] == 0):
-                        explored.add(Node[0] * numberOfNodes + Node[1])
-                        continue
-                    counter+=1
-                    explored.add(Node[0] * numberOfNodes + Node[1])
-                    if(Node[0]-1 >=0):
-                        exploreList.append([Node[0]-1,Node[1]])
-                    if(Node[0]+1 < len(grid)):
-                        exploreList.append([Node[0]+1,Node[1]])
-                    if(Node[1]-1 >= 0):
-                        exploreList.append([Node[0],Node[1]-1])
-                    if(Node[1]+1 < numberOfNodes):
-                        exploreList.append([Node[0],Node[1]+1])
-                    answer = max(answer , counter)
+            for j in range(len(grid[0])):
+                if(grid[i][j] == 1): 
+                    answer = max(answer , self.returnMax(grid , i , j))
         return answer

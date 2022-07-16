@@ -7,7 +7,7 @@ class Solution:
             return 1
         if(moves == 0):
             return 0
-        key = f"{r}-{c}-{moves}"
+        key = (r + moves*self.m)*self.n + c
         if(key in self.lookup):
             return self.lookup[key]
         answer = self.rec(r-1,c,moves-1) + self.rec(r,c-1,moves-1) + self.rec(r+1,c,moves-1) + self.rec(r,c+1,moves-1)

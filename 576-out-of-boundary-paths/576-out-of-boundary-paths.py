@@ -17,7 +17,7 @@ class Solution:
         self.n = n
         self.lookup = [[[-1 for k in range(maxMove)] for j in range(n)] for i in range(m)]
         r = self.rec(startRow,startColumn,maxMove)
-
+        # print(self.lookup)
         # return r 
         return (r % (pow(10,9) + 7))
         

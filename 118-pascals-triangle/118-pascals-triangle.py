@@ -11,7 +11,6 @@ class Solution:
                 a[k] = sum(triangle[i][k-1:k+1])
                 k+=1
             triangle.append(a)
-        print(triangle)
         return triangle
             
             

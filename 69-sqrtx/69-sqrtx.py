@@ -4,16 +4,20 @@ class Solution:
         if x == 1 : return 1
         minimum = 1
         maximum = x
-        div = 8
-        while(div > 1):
-            temp = maximum / div
+        dm = 8
+        while(dm > 1):
+            temp = maximum / dm
             if(temp * temp <= x+1):
-                div-=1
+                dm-=1
             else:
-                maximum = temp
-                
-        
-        
+                maximum = temp 
+        dm = 8
+        while(dm > 1):
+            temp = minimum * dm
+            if(temp * temp >= x -1):
+                dm-=1
+            else:
+                minimum = temp
         while(int(maximum) != int(minimum)):
             middle = (maximum + minimum) / 2
             result = middle * middle

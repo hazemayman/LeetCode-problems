@@ -4,7 +4,7 @@ class Solution:
         if x == 1 : return 1
         minimum = 1
         maximum = x
-        div = 5
+        div = 10
         while(div > 1):
             temp = maximum / div
             if(temp * temp <= x+1):

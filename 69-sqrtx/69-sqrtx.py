@@ -3,7 +3,16 @@ class Solution:
         if x == 0 : return 0
         if x == 1 : return 1
         minimum = 1
-        maximum = x//2
+        maximum = x
+        div = 5
+        while(div > 1):
+            temp = maximum / div
+            if(temp * temp <= x+1):
+                div-=1
+            else:
+                maximum = temp
+                
+        
         
         while(int(maximum) != int(minimum)):
             middle = (maximum + minimum) / 2

@@ -1,35 +1,17 @@
 class Solution:
     
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
-        lookup = {}
-        for i in range(len(s)):
-            if s[i] in lookup:
-                lookup[s[i]].append(i)
-            else:
-                lookup[s[i]] = [i]
-                
+        lookup = defaultdict(list)
+        for word in words:
+            lookup[word[0]].append(word[1:])
         Counter = 0
-        while(len(words) > 0):
-            word = words.pop()
-            index = -1
-            condition = True
-            for i in range(0 , len(word)):
-                if(word[i] in lookup):
-                    innerCondition = False
-                    for raw_index in lookup[word[i]]:
-                        if(raw_index > index):
-                            index = raw_index
-                            innerCondition = True
-                            break
-                    if(not innerCondition):
-                        condition = False
-                        break
-                        
-                else:
-                    condition = False
-                    break
-            if(condition):
-                
-                Counter+=1
-                
+        for charachter in s:
+            if(charachter in lookup):
+                word_remainder_list = lookup.pop(charachter)
+                for word_remainder in word_remainder_list:
+                    if(len(word_remainder) == 0):
+                        Counter+=1
+                    else:
+                        lookup[word_remainder[0]].append(word_remainder[1:])
+
         return Counter

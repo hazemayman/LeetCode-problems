@@ -1,5 +1,4 @@
 class Solution:
-    lookup = {}
     def climbStairs(self, n: int) -> int:
         lookup = [1 , 2]
         i = n-1

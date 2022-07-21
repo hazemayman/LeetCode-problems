@@ -24,10 +24,9 @@ class Solution:
             Node1 = head
             head = nextNode
             counter+=1
-        nexthead = head.next
-        
+
+        firstInSeq.next = head.next
         head.next = Node1
-        firstInSeq.next = nexthead
         if(prevhead == None):
             originalHead = head
         else:

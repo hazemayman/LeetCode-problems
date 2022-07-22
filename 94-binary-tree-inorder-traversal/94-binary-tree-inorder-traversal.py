@@ -5,15 +5,20 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    solution = []
-    def rec (self , root):
-        if(root == None) : return []
-        if(root.left != None): self.rec(root.left)
-        self.solution.append(root.val)
-        if(root.right != None): self.rec(root.right)
-        return self.solution
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        self.solution = []
-        answer = self.rec(root)
+        answer = []
+        curr = root
+        while(curr != None):
+            if(curr.left == None):
+                answer.append(curr.val)
+                curr = curr.right
+            else:
+                pre = curr.left
+                while(pre.right != None):
+                    pre = pre.right
+                pre.right = curr
+                temp = curr
+                curr = curr.left
+                temp.left = None
         return answer
-        
+                

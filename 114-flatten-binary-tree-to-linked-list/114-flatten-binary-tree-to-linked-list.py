@@ -17,8 +17,8 @@ class Solution:
             root.right = rightBranchNodes[0]
         root.left = None
         
-        print(root.val," - " , rightBranchNodes[1])
-        print()
+#         print(root.val," - " , rightBranchNodes[1])
+#         print()
         
         return [root ,rightBranchNodes[1] if rightBranchNodes[1] else leftBranchNodes[1]]
         
